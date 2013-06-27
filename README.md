@@ -1,7 +1,7 @@
 cnam-AnnouncementSystem
 =======================
 
- Système d'annonces:
+ Système d'annonces:<br/>
 le role de ce système est d'assurer un moteur qui sert a envoyer a l'étudiant des messages en utilisant plusieur canal comme email , sms , notification sur application android
 le system va etre utiliser dans deux maniere:
 -une page web qui assure au utilisateur de specifier le numero du dossier du l'etudiant , le canal preferer pour envoyer le message et le message .
