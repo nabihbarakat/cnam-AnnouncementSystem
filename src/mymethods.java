@@ -32,6 +32,11 @@ public class mymethods extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter printWriter  = response.getWriter();
         printWriter.println("<h1>Hello World abc !</h1>");
+        
+        SendEmail emailer = new SendEmail();
+        //the domains of these email addresses should be valid,
+        //or the example will fail:
+        //emailer.sendEmail("test@blah.com", "barakat_nabih@hotmail.com",  "Testing 1-2-3", "blah blah blah" );
 	}
 
 	/**
