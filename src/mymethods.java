@@ -31,12 +31,30 @@ public class mymethods extends HttpServlet {
 		// TODO Auto-generated method stub
         response.setContentType("text/html");
         PrintWriter printWriter  = response.getWriter();
-        printWriter.println("<h1>Hello World abc !</h1>");
+        System.out.print("<h1>Hello World abc 2 !</h1>");
         
-        SendEmail emailer = new SendEmail();
+        //SendSMS newsms= new SendSMS();
+        //SendEmail emailer = new SendEmail();
         //the domains of these email addresses should be valid,
         //or the example will fail:
-        //emailer.sendEmail("test@blah.com", "barakat_nabih@hotmail.com",  "Testing 1-2-3", "blah blah blah" );
+        //String msg = "hello from here";	 
+  	  //String subject = "subject yup";
+        //emailer.sendEmail(subject,msg);
+	
+        
+        SMSSender       smssender = new SMSSender();
+       
+        try{
+        	
+        
+        smssender.SendSMS("9613144127", "bade ella enne 3m eb3atlak risele ta jarib eza meshe el 7al");
+        }
+        catch(Exception ex)
+        {
+        	
+        
+        }
+	
 	}
 
 	/**
