@@ -1,3 +1,6 @@
+package AnnoucementSystem;
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.mysql.jdbc.PreparedStatement;
+
+
 
 public class StudentData {
 
@@ -22,7 +27,7 @@ public class StudentData {
    static String username ="root";
    static String password = "root";
 	
-	 public static void GetStudents() {
+	 public static ArrayList<StudentData> GetStudents() {
 		 
 		 	ArrayList<StudentData> list= new ArrayList<StudentData>();
 	        Connection dbCon = null;
@@ -46,8 +51,7 @@ public class StudentData {
 	            	student.Name =rs.getString(2);
 	            	student.Mobile=rs.getString(3);
 	            	student.Mail=rs.getString(4);
-	             int count = rs.getInt(1);
-	             System.out.print("count of stock : " + count);
+	            	list.add(student);
 	            }
 	           
 	        } catch (SQLException ex) {
@@ -56,7 +60,7 @@ public class StudentData {
 	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
 	        }
 	       
-	       
+	       return list;
 	    }  
 	 public static String GetMailById(String Id) {
 		 
@@ -127,6 +131,6 @@ public class StudentData {
 }
 
 
-}
+
 
 

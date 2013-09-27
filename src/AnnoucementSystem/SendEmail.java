@@ -1,3 +1,4 @@
+package AnnoucementSystem;
 
 
 import java.util.Properties;
@@ -15,7 +16,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 
-public  class SendEmail {
+public class SendEmail {
 
   public  void sendEmail( String subject,String msg)
   {
