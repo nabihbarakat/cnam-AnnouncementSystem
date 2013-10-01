@@ -97,13 +97,13 @@ public class StudentData {
 	       return "";
 	       
 	    }
-	 public static String GetPhoneById(String Id) {
+	 public static String GetPhoneById(Integer Id) {
 		 
 	        Connection dbCon = null;
 	        java.sql.PreparedStatement stmt = null;
 	        ResultSet rs = null;
 	       
-	        String query ="select Mobile from student where Id=?";
+	        String query ="select Mobile from student where Id =" + Id;
 	       
 	        
 	        try {
@@ -111,7 +111,7 @@ public class StudentData {
 	        	 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 	            dbCon = DriverManager.getConnection(dbURL, username, password);
 	            stmt = dbCon.prepareStatement(query);
-	            stmt.setString(1, Id.toString());
+	            //stmt.setString(1, Id.toString());
 	            rs = stmt.executeQuery(query);
 	   
 	           
