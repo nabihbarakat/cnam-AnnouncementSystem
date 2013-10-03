@@ -37,7 +37,7 @@ public class Service extends HttpServlet {
 		switch (action) {
 		case "sms":
 	
-			 String mobileNbr= StudentData.GetPhoneById(studentId);
+			 String mobileNbr= StudentData.GetPhoneById(Integer.getInteger(studentId));
 			 
 			 SMSSender smsSender = new SMSSender();
 			 smsSender.SendSMS(mobileNbr, msg);

@@ -51,7 +51,8 @@
 			<%
 				}
 			%>
-		</select> <br /> msg <input type="text" id="msg" name="msg" /> <br /> <input
+		</select> - <a href="newstudent.jsp" >Add new student</a>
+		 <br /> msg <input type="text" id="msg" name="msg" cols="40" rows="5" style="width:200px; height:50px;"  /> <br /> <input
 			type="radio" name="canal" value="sms">sms<br> <input
 			type="radio" name="canal" value="email">email<br> <input
 			type="radio" name="canal" value=mobilenotification>mobilenotification<br>

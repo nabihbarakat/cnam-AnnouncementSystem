@@ -128,6 +128,39 @@ public class StudentData {
 	       return "";
 	       
 	    }  
+	 
+	 public static boolean AddStudent(String name, String mobile, String email) {
+		 
+	        Connection dbCon = null;
+	        java.sql.PreparedStatement stmt = null;
+	        boolean rs = false;
+	       
+	        String query ="INSERT INTO Student(name,email,mobile) values ( ? , ? , ?)";
+	       
+	        
+	        try {
+	   
+	        	 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+	            dbCon = DriverManager.getConnection(dbURL, username, password);
+	            stmt = dbCon.prepareStatement(query);
+	            stmt.setString(1, name);
+	            stmt.setString(2, email);
+	            stmt.setString(3,mobile);
+	            //(" + name + "," + mobile + "," + email + ")";
+	            //stmt.setString(1, Id.toString());
+	            rs = stmt.execute();
+	   
+	           
+	            
+	           
+	        } catch (SQLException ex) {
+	        	System.out.print("Error on SudentData.AddStudent :" + ex.getMessage());
+	   
+	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	       return rs;
+	       
+	    }  
 }
 
 
