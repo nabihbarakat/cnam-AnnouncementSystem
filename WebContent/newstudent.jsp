@@ -12,7 +12,7 @@
 	boolean result;
 
 	if (name != null) {
-	 result= StudentData.AddStudent(name, mobile, email);
+		result = StudentData.AddStudent(name, mobile, email);
 	}
 %>
 
@@ -23,14 +23,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<form method="POST">
-		 	Name  <input type="name" id="msg" name="name" /> <br />
-		 Email <input type="text" id="email" name="email" /> <br />
-     	 Mobile <input type="text" id="mobile" name="mobile" /> <br />
-		<input type="submit" value="Submit" />
-- <a href="contactstudent.jsp" >back</a>
-	</form>
+	<div class="container" style="background-color:#C1002A">
+		<div class="header">
+		<div class="logo">le c<span style="font-weight:bold">nam</span> liban</div>  AnnouncementSystem
+		</div>
+	</div>
+	<div class="container">
+		<div class="wrapper">
+		<h2>Add New Student</h2>
+			<form method="POST">
+				<div class="line">
+					<div class="label">Name</div>
+					<div class="input">
+						<input type="name" id="msg" name="name" />
+					</div>
+				</div>
+				<div class="line">
+					<div class="label">Email</div>
+					<div class="input">
+						<input type="text" id="email" name="email" />
+					</div>
+				</div>
+
+				<div class="line">
+					<div class="label">Mobile</div>
+					<div class="input">
+						<input type="text" id="mobile" name="mobile" />
+					</div>
+				</div>
+				<div class="line">
+					<input type="submit" value="Submit" /> - <a
+						href="contactstudent.jsp">back</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
 </body>
 </html>
