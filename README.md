@@ -38,5 +38,10 @@ sur l'autre cote, l'etudiant vas recevoir ces message par mail ,sms , ou par not
 
     Environnement organisationnel
     Environnement technique et configurations
+    
+  ## Configuration
+  	-Import DB.sql
+  	-adjust db connection parameters at StudentData.java
+  	-run the application ...
 
 	
