@@ -24,8 +24,13 @@
 
 			emailSender.sendEmail(email, msg);
 		} else if (action.equals("mobilenotification")) {
+			
+			String gcmID = StudentData.GetGCMID(studentId);
+			NotificationSender notificationSender = new NotificationSender();
 
+			notificationSender.SendNotification(gcmID, msg);
 		}
+		
 	}
 %>
 
@@ -35,7 +40,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>AnnoucementSystem - cnam</title>
 
 
 <link href="style.css" type="text/css" rel="stylesheet">

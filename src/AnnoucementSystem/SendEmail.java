@@ -43,7 +43,7 @@ public class SendEmail {
 	    // Create the email addresses involved
 	    try {
 	        InternetAddress from = new InternetAddress(username);
-	        message.setSubject(subject);
+	        message.setSubject("annonce");
 	        message.setFrom(from);
 	        message.addRecipients(Message.RecipientType.TO, InternetAddress.parse("ninobarakat@hotmail.com"));
 
@@ -52,7 +52,7 @@ public class SendEmail {
 
 	        // Create your text message part
 	        BodyPart messageBodyPart = new MimeBodyPart();
-	        messageBodyPart.setText("some text to send");
+	        messageBodyPart.setText("");
 
 	        // Add the text part to the multipart
 	        multipart.addBodyPart(messageBodyPart);

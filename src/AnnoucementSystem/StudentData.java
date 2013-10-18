@@ -90,7 +90,7 @@ public class StudentData {
 	            }
 	           
 	        } catch (SQLException ex) {
-	        	System.out.print("Error on SudentData.GetStudents :" + ex.getMessage());
+	        	System.out.print("Error on SudentData.GetMailById :" + ex.getMessage());
 	   
 	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
 	        }
@@ -121,13 +121,48 @@ public class StudentData {
 	            }
 	           
 	        } catch (SQLException ex) {
-	        	System.out.print("Error on SudentData.GetStudents :" + ex.getMessage());
+	        	System.out.print("Error on SudentData.GetPhoneById :" + ex.getMessage());
 	   
 	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
 	        }
 	       return "";
 	       
 	    }  
+	 public static String GetGCMID(String Id) {
+		 
+		 
+			
+		 
+	        Connection dbCon = null;
+	        java.sql.PreparedStatement stmt = null;
+	        ResultSet rs = null;
+	       
+	        String query ="select gcmID from student where Id=?";
+	       
+	        
+	        try {
+	   
+	        	 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+	            dbCon = DriverManager.getConnection(dbURL, username, password);
+	            stmt = dbCon.prepareStatement(query);
+	            stmt.setString(1, Id.toString());
+	            rs = stmt.executeQuery(query);
+	   
+	           
+	            while(rs.next()){
+	            	
+	             String mail = rs.getString(1);
+	             return mail;
+	            }
+	           
+	        } catch (SQLException ex) {
+	        	System.out.print("Error on SudentData.GetGCMID :" + ex.getMessage());
+	   
+	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	       return "";
+	       
+	    }
 	 
 	 public static boolean AddStudent(String name, String mobile, String email) {
 		 

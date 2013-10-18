@@ -53,7 +53,11 @@ public class Service extends HttpServlet {
 			 emailSender.sendEmail(email, msg);
 		case "mobilenotification":
 		
-			 
+			String gcmID = StudentData.GetGCMID(studentId);
+			NotificationSender notificationSender = new NotificationSender();
+
+			notificationSender.SendNotification(gcmID, msg);
+			
 			break;
 
 		default:
