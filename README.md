@@ -41,8 +41,8 @@ sur l'autre cote, l'etudiant vas recevoir ces message par mail ,sms , ou par not
     
   ## Configuration:
   
-  	Import DB.sql <br> 
-  	Adjust db connection parameters at StudentData.java <br>   
-  	Run the application ...(start with contactstudent.jsp)  <br>
+  	Import DB.sql  
+  	Adjust db connection parameters at StudentData.java 
+  	Run the application ...(start with contactstudent.jsp)  
 
 	
