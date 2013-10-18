@@ -170,7 +170,7 @@ public class StudentData {
 	        java.sql.PreparedStatement stmt = null;
 	        boolean rs = false;
 	       
-	        String query ="INSERT INTO Student(name,email,mobile) values ( ? , ? , ?)";
+	        String query ="INSERT INTO Student(name,email,mobile,gcmID) values ( ? , ? , ? , ?)";
 	       
 	        
 	        try {
@@ -181,6 +181,7 @@ public class StudentData {
 	            stmt.setString(1, name);
 	            stmt.setString(2, email);
 	            stmt.setString(3,mobile);
+	            stmt.setString(4," ");
 	            //(" + name + "," + mobile + "," + email + ")";
 	            //stmt.setString(1, Id.toString());
 	            rs = stmt.execute();

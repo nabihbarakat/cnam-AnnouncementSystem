@@ -44,5 +44,14 @@ sur l'autre cote, l'etudiant vas recevoir ces message par mail ,sms , ou par not
   	Import DB.sql  
   	Adjust db connection parameters at StudentData.java 
   	Run the application ...(start with contactstudent.jsp)  
+  	
+  ## Service communication:
+  	pour utiliser cette module d'une facon oriente service il faut utiliser la servlet service et passer les parametres suivant:
+   	action ( pour specifer le canal a utiliser email,sms,mobilenotification)
+  	studentid ( l ID de l'etudiant )
+  	msg ( le message qu'on veut envoeyr au etudiant)
+  	
+  	example d'utilisation:
+  	http://localhost:8080/AnnouncementSystem/Service?action=email&studentid=1&msg=hello
 
 	

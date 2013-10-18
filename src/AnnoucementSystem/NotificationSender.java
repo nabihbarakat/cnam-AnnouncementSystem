@@ -2,6 +2,7 @@ package AnnoucementSystem;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -19,7 +20,7 @@ private final String USER_AGENT = "Mozilla/5.0";
 			try
 			{
 				
-			
+				   String key = "AIzaSyBiL08a02JPposBpk9PIogEmCXZ79KEskY";
 				    
 					String url = "https://android.googleapis.com/gcm/send" ;
 			 
@@ -29,8 +30,17 @@ private final String USER_AGENT = "Mozilla/5.0";
 					// optional default is GET
 					con.setRequestMethod("Post");
 					con.setRequestProperty("Content-Type", "application/json");
-					con.setRequestProperty("Authorization", "key=" + "AIzaSyBiL08a02JPposBpk9PIogEmCXZ79KEskY");
-					System.out.println(con.toString());
+					con.setRequestProperty("Authorization", "key=" + key);
+					con.connect();
+					
+				    String data=	"{'registration_ids' : ['" + to + "'], 'data' : { 'message' : '" + msg + "' },}";
+
+					byte[] outputBytes = data.getBytes("UTF-8");
+					OutputStream os = con.getOutputStream();
+					os.write(outputBytes);
+
+					os.close();
+					
 					//add request header				
 					int responseCode = con.getResponseCode();
 								 
