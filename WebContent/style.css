@@ -48,16 +48,16 @@ h2{
     display: inline-block;
     margin-bottom: 27px;
 }
+a.button,
 input[type=submit]{
- background-color: #026399;
+ background-color: #C1002A;
   border: medium none;
   border-radius: 5px 5px 5px 5px;
   color: #FFFFFF;
   float: left;
-  font-family: "Palatino Sans W23 Bold";
   font-size: 145%;
-  margin-top: 5px;
-  padding: 5px 1px 9px;
+  margin: 5px;
+  padding: 2px;
   text-align: center;
-  width: 74px;
+  text-decoration:none;
 }

@@ -197,6 +197,43 @@ public class StudentData {
 	       return rs;
 	       
 	    }  
+	 
+	 
+	 public static Boolean CheckLogin(String username,String Password) {
+		 
+		 
+			
+		 
+	        Connection dbCon = null;
+	        java.sql.PreparedStatement stmt = null;
+	        ResultSet rs = null;
+	       
+	        String query ="select count(*) as verfied from users where username=? and password=?";
+	       
+	        
+	        try {
+	   
+	        	 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+	            dbCon = DriverManager.getConnection(dbURL, username, password);
+	            stmt = dbCon.prepareStatement(query);
+	            stmt.setString(1, username.toString());
+	            stmt.setString(1, password.toString());
+	            rs = stmt.executeQuery(query) ;
+	            if (rs.getInt("verfied") > 0)
+	            	return true;
+	            	else 
+	            	return false;
+	           
+	           
+	           
+	        } catch (SQLException ex) {
+	        	System.out.print("Error on SudentData.GetGCMID :" + ex.getMessage());
+	   
+	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	       return false;
+	       
+	    }
 }
 
 
