@@ -10,9 +10,9 @@ import java.util.Properties;
 
 public class Security {
 	
-	   static String dbURL =  "jdbc:mysql://localhost:3306/cnam";
-	   static String username ="root";
-	   static String password = "root";
+	   static String dbURL = Config.dbURL;// "jdbc:mysql://localhost:3306/cnam";
+	   static String username = Config.username;//"root";
+	   static String password = Config.password;// "root";
 		
 	   
 	 public static Boolean CheckLogin(String loginName,String loginPass) {

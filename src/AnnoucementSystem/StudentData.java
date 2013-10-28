@@ -24,9 +24,9 @@ public class StudentData {
 	
 
 	
-   static String dbURL =  "jdbc:mysql://localhost:3306/cnam";
-   static String username ="root";
-   static String password = "root";
+	   static String dbURL = Config.dbURL;// "jdbc:mysql://localhost:3306/cnam";
+	   static String username = Config.username;//"root";
+	   static String password = Config.password;// "root";
 	
 	 public static ArrayList<StudentData> GetStudents() {
 		 
