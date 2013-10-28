@@ -3,6 +3,7 @@
     display: block;
     margin: 28px auto auto;
     width: 622px;
+    display: inline-block;
 }
 .line{
 	display: block;
@@ -60,4 +61,26 @@ input[type=submit]{
   padding: 2px;
   text-align: center;
   text-decoration:none;
+}
+.mainMenu
+{
+    display: block;
+    width: 245px;
+}
+.mainMenu div{
+    border-bottom: 1px dotted;
+    float: left;
+    padding-bottom: 7px;
+    width: 100%;
+}
+.mainMenu a
+{
+    color: #000000;
+    text-decoration: none;
+    float:left;
+}
+.inner
+{
+	width:900px;
+	margin:0 auto;
 }

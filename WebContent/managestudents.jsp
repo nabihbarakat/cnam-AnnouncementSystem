@@ -6,6 +6,9 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
+    boolean logged = Boolean.parseBoolean(String.valueOf( session.getAttribute("login")));
+	if(!logged) response.sendRedirect("login.jsp"); 
+	
 	
 %>
 
@@ -26,35 +29,55 @@
 		</div>
 	</div>
 	<div class="container">
+      <div class="inner" >
+        <div class="mainMenu"  >
+        					<div >
+                                <a href="index.jsp" > Home </a>
+                        	</div>
+                            <div >
+                                    <a href="contactstudent.jsp" > Send a Notification To Student </a>
+                            </div>
+                            <div >
+                                    <a href="managestudents.jsp" > <b> Manage Students </b> </a>
+                            </div>
+                            <div >
+                                    <a href="newstudent.jsp" >  Add New Student  </a>
+                            </div>
+                            <div >
+                                    <a href="login.jsp" >Logout </a>
+                            </div>
+                           
+		</div>
 		<div class="wrapper">
-		<h2>Student:</h2>
-			<form method="POST">
+		<h2>List Of StudentS:</h2>
+			
 				
-					
+					<div style=" border: 1px solid;">
 						
-					
-							
 								<%
+							
 									ArrayList<StudentData> students2;
 									ArrayList<StudentData> students = StudentData.GetStudents();
-			
+								
 									for (int i = 0; i < students.size(); i++) {
 								%>
-								<div class="line">
+								<div class="line" style="border-bottom: 1px solid;">
 									<%=students.get(i).Name%>
+                                    <div style="float:right"> <a class="button" href="editstudent.jsp?id=<%=students.get(i).Id%>" >edit</a> </div>
 								</div>
 								<%
 									}
 								%>
 							
-				
+								
+							
+				</div>
 					
 					<div class="line">
 						<a class="button" href="newstudent.jsp" >Add new Student</a>
 						
 					</div>
-				
-			</form>
+			</a>
 		</div>
 	</div>
 </body>

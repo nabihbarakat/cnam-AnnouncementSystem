@@ -6,28 +6,8 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
-	String status = ""; 
-	if ("POST".equalsIgnoreCase(request.getMethod())) {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		
-		boolean result;
-	
-		if (username != null && password!=null) 
-		{
-			result = StudentData.CheckLogin(username,password);
-			if(result)
-				response.sendRedirect("index.jsp"); 
-			else
-				status="Wrong useraname or password !";
-			
-		}
-		else
-		{
-			status="Please enter username and password";
-		}
-	}
-	
+	boolean logged = Boolean.parseBoolean(String.valueOf( session.getAttribute("login")));
+	if(!logged) response.sendRedirect("login.jsp"); 
 %>
 
 
@@ -45,32 +25,34 @@
 		<div class="logo">le c<span style="font-weight:bold">nam</span> liban</div>  AnnouncementSystem
 		</div>
 	</div>
+    
 	<div class="container">
+    <div class="inner" >
+            <div class="mainMenu"  >
+            			<div >
+                                <a href="index.jsp" ><b> Home </b> </a>
+                        </div>
+                        <div >
+                                <a href="contactstudent.jsp" > Send a Notification To Student </a>
+                        </div>
+                        <div >
+                                <a href="managestudents.jsp" > Manage Students </a>
+                        </div>
+                        <div >
+                                    <a href="newstudent.jsp" >  Add New Student  </a>
+                            </div>
+                        <div >
+                                <a href="login.jsp" >Logout </a>
+                        </div>
+                       
+			</div>
 		<div class="wrapper">
         <label>
-        Welcome.
+        Bienvenue sur le système d'annonce du CNAM.
       </label><br>
-		<h2>Main Menu</h2>
-	
-				<div class="line">
-					<div class="label">
-						<a href="contactstudent.jsp" > Send a Notification To Student </a>
-					</div>
-				</div>
-                <div class="line">
-					<div class="label">
-						<a href="ManageStudents.jsp" > Manage Students </a>
-					</div>
-				</div>
-                <div class="line">
-					<div class="label">
-						<a href="login.jsp" >Logout </a>
-					</div>
-				</div>
-               
-	
+		
 		</div>
 	</div>
-
+  </div>
 </body>
 </html>

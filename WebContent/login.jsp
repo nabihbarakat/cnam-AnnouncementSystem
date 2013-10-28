@@ -6,6 +6,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
+	session.setAttribute("login", "false");
 	String status = ""; 
 	if ("POST".equalsIgnoreCase(request.getMethod())) {
 		String username = request.getParameter("username");
@@ -13,11 +14,14 @@
 		
 		boolean result;
 	
-		if (username != null && password!=null) 
+		if (username != null && password!=null && username != "" && password!="") 
 		{
-			result = StudentData.CheckLogin(username,password);
+			result = Security.CheckLogin(username,password);
 			if(result)
+			{
+				session.setAttribute("login", "true");
 				response.sendRedirect("index.jsp"); 
+			}
 			else
 				status="Wrong useraname or password !";
 			
@@ -48,7 +52,7 @@
 	<div class="container">
 		<div class="wrapper">
         <label>
-      hi  <%= status %>
+     <%= status %>
       </label><br>
 		<h2>Login</h2>
 			<form method="POST">
@@ -61,7 +65,7 @@
 				<div class="line">
 					<div class="label">Password</div>
 					<div class="input">
-						<input type="password" id="password" name="password" />
+						<input type="text" id="password" name="password" />
 					</div>
 				</div>
 

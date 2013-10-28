@@ -6,12 +6,14 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
+	boolean logged = Boolean.parseBoolean(String.valueOf( session.getAttribute("login")));
+	if(!logged) response.sendRedirect("login.jsp"); 
+	
 	String studentId = request.getParameter("cmbStudents");
 	String msg = request.getParameter("msg");
 	String action = request.getParameter("canal");
 
-	System.out.print("start");
-	System.out.print(action);
+	
 	if (action != null) {
 		if (action.equals("sms")) {
 			String mobileNbr = StudentData.GetPhoneById(Integer
@@ -51,6 +53,25 @@
 		</div>
 	</div>
 	<div class="container">
+    <div class="inner" >
+        <div class="mainMenu"  >
+        					<div >
+                                <a href="index.jsp" > Home </a>
+                        	</div>
+                            <div >
+                                    <a href="contactstudent.jsp" > <b> Send a Notification To Student </b> </a>
+                            </div>
+                            <div >
+                                    <a href="managestudents.jsp" > Manage Students </a>
+                            </div>
+                            <div >
+                                    <a href="newstudent.jsp" > Add New Student  </a>
+                            </div>
+                            <div >
+                                    <a href="login.jsp" >Logout </a>
+                            </div>
+                           
+		</div>
 		<div class="wrapper">
 		<h2>Send Message to Student</h2>
 			<form method="POST">
@@ -72,7 +93,7 @@
 								<%
 									}
 								%>
-							</select> - <a href="newstudent.jsp">Add new student</a>
+							</select>
 						</div>
 					</div>
 					<div class="line">
@@ -99,6 +120,7 @@
 				
 			</form>
 		</div>
+       </div>
 	</div>
 </body>
 </html>

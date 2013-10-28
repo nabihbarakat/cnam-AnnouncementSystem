@@ -15,8 +15,16 @@
 	boolean result;
 
 	if (name != null) {
-		result = StudentData.AddStudent(name, mobile, email);
+		result = StudentData.UpdateStudent(name, mobile, email,request.getParameter("id"));
+		 response.sendRedirect("managestudents.jsp");
 	}
+	
+	ArrayList<StudentData> students2;
+	ArrayList<StudentData> students = StudentData.GetStudentByID(request.getParameter("id"));
+	
+
+	
+	
 %>
 
 
@@ -25,7 +33,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add New Student</title>
+<title>Edit Student</title>
 <link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -44,10 +52,10 @@
                                 <a href="contactstudent.jsp" > Send a Notification To Student </a>
                         </div>
                         <div >
-                                <a href="managestudents.jsp" > Manage Students </a>
+                                <a href="managestudents.jsp" > <b> Manage Students </b></a>
                         </div>
                         <div >
-                                <a href="newstudent.jsp" > <b> Add New Student </b> </a>
+                                <a href="newstudent.jsp" > Add New Student  </a>
                         </div>                        
                         <div >
                                 <a href="login.jsp" >Logout </a>
@@ -55,30 +63,30 @@
                        
 			</div>
             <div class="wrapper">
-            <h2>Add New Student</h2>
+            <h2>Edit Student : <%=students.get(0).Name%></h2>
                 <form method="POST">
                     <div class="line">
                         <div class="label">Name</div>
                         <div class="input">
-                            <input type="name" id="msg" name="name" />
+                            <input type="name" id="msg" name="name" value="<%=students.get(0).Name%>" />
                         </div>
                     </div>
                     <div class="line">
                         <div class="label">Email</div>
                         <div class="input">
-                            <input type="text" id="email" name="email" />
+                            <input type="text" id="email" name="email" value="<%=students.get(0).Mail%>" />
                         </div>
                     </div>
     
                     <div class="line">
                         <div class="label">Mobile</div>
                         <div class="input">
-                            <input type="text" id="mobile" name="mobile" />
+                            <input type="text" id="mobile" name="mobile" value="<%=students.get(0).Mobile%>" />
                         </div>
                     </div>
                     <div class="line">
-                        <input type="submit" value="Submit" /> - <a class="button"
-                            href="index.jsp">back</a>
+                        <input type="submit" value="Update" /> - <a class="button"
+                            href="managestudents.jsp">back</a>
                     </div>
                 </form>
             </div>

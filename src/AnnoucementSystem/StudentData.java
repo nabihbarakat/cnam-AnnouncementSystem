@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,9 +22,9 @@ public class StudentData {
 	public  String Mobile="";
 	public String Mail ="";
 	
+
 	
-	
-   static String dbURL = "jdbc:mysql://localhost:3306/cnam";
+   static String dbURL =  "jdbc:mysql://localhost:3306/cnam";
    static String username ="root";
    static String password = "root";
 	
@@ -49,13 +50,49 @@ public class StudentData {
 	            	StudentData student = new StudentData();
 	            	student.Id = rs.getString(1);
 	            	student.Name =rs.getString(2);
-	            	student.Mobile=rs.getString(3);
-	            	student.Mail=rs.getString(4);
+	            	student.Mobile=rs.getString(4);
+	            	student.Mail=rs.getString(3);
 	            	list.add(student);
 	            }
 	           
 	        } catch (SQLException ex) {
 	        	System.out.print("Error on SudentData.GetStudents :" + ex.getMessage());
+	   
+	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	       
+	       return list;
+	    }  
+	
+	 public static ArrayList<StudentData> GetStudentByID(String id) {
+		 
+		 	ArrayList<StudentData> list= new ArrayList<StudentData>();
+	        Connection dbCon = null;
+	        java.sql.PreparedStatement stmt   = null;
+	        ResultSet rs = null;
+	       
+	        String query ="select Id,Name,Email,Mobile from student where id =?";
+	       
+	        
+	        try {
+	   
+	        	 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+	            dbCon = DriverManager.getConnection(dbURL, username, password);
+	            stmt = dbCon.prepareStatement(query);
+	            stmt.setString(1, id);
+	            rs = stmt.executeQuery();
+	   
+	            while(rs.next()){
+	            	StudentData student = new StudentData();
+	            	student.Id = rs.getString(1);
+	            	student.Name =rs.getString(2);
+	            	student.Mobile=rs.getString(4);
+	            	student.Mail=rs.getString(3);
+	            	list.add(student);
+	            }
+	           
+	        } catch (SQLException ex) {
+	        	System.out.print("Error on SudentData.GetStudentbyId :" + ex.getMessage());
 	   
 	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
 	        }
@@ -80,7 +117,7 @@ public class StudentData {
 	            dbCon = DriverManager.getConnection(dbURL, username, password);
 	            stmt = dbCon.prepareStatement(query);
 	            stmt.setString(1, Id.toString());
-	            rs = stmt.executeQuery(query);
+	            rs = stmt.executeQuery();
 	   
 	           
 	            while(rs.next()){
@@ -146,7 +183,7 @@ public class StudentData {
 	            dbCon = DriverManager.getConnection(dbURL, username, password);
 	            stmt = dbCon.prepareStatement(query);
 	            stmt.setString(1, Id.toString());
-	            rs = stmt.executeQuery(query);
+	            rs = stmt.executeQuery();
 	   
 	           
 	            while(rs.next()){
@@ -198,17 +235,13 @@ public class StudentData {
 	       
 	    }  
 	 
-	 
-	 public static Boolean CheckLogin(String username,String Password) {
-		 
-		 
-			
+	 public static boolean UpdateStudent(String name, String mobile, String email,String id) {
 		 
 	        Connection dbCon = null;
 	        java.sql.PreparedStatement stmt = null;
-	        ResultSet rs = null;
+	        boolean rs = false;
 	       
-	        String query ="select count(*) as verfied from users where username=? and password=?";
+	        String query ="update  Student set name=?,email=?,mobile=?,gcmID=? where id=? ";
 	       
 	        
 	        try {
@@ -216,24 +249,29 @@ public class StudentData {
 	        	 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 	            dbCon = DriverManager.getConnection(dbURL, username, password);
 	            stmt = dbCon.prepareStatement(query);
-	            stmt.setString(1, username.toString());
-	            stmt.setString(1, password.toString());
-	            rs = stmt.executeQuery(query) ;
-	            if (rs.getInt("verfied") > 0)
-	            	return true;
-	            	else 
-	            	return false;
+	            stmt.setString(1, name);
+	            stmt.setString(2, email);
+	            stmt.setString(3,mobile);
+	            stmt.setString(4," ");
+	            stmt.setString(5,id);
+	            //(" + name + "," + mobile + "," + email + ")";
+	            //stmt.setString(1, Id.toString());
+	            rs = stmt.execute();
+	   
 	           
-	           
+	            
 	           
 	        } catch (SQLException ex) {
-	        	System.out.print("Error on SudentData.GetGCMID :" + ex.getMessage());
+	        	System.out.print("Error on SudentData.UpdateStudent :" + ex.getMessage());
 	   
 	           //    Logger.getLogger(CollectionTest.class.getName()).log(Level.SEVERE, null, ex);
 	        }
-	       return false;
+	       return rs;
 	       
-	    }
+	    }  
+	 
+	 
+	
 }
 
 
