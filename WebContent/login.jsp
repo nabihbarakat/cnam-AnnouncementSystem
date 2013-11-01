@@ -59,13 +59,13 @@
 				<div class="line">
 					<div class="label">Username</div>
 					<div class="input">
-						<input type="username" id="username" name="username" />
+						<input type="username" value="admin" id="username" name="username" />
 					</div>
 				</div>
 				<div class="line">
 					<div class="label">Password</div>
 					<div class="input">
-						<input type="text" id="password" name="password" />
+						<input type="password" value="admin123" id="password" name="password" />
 					</div>
 				</div>
 
